@@ -2,7 +2,7 @@ package collector
 
 import _ "embed"
 
-//go:embed template/daily-forecast.md.template
+//go:embed template/daily-market.md.template
 var dailyStonksTemplateData string
 
 var templates = []string{

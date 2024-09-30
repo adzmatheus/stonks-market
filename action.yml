@@ -1,13 +1,13 @@
 name: 'Update Stonks'
 description: 'Update Daily Stonks to your README.md'
 inputs:
-  city:
-    description: 'City'
+  crypto:
+    description: 'Crypto'
     required: true
   days:
-    description: 'Days of forecast'
+    description: 'Days of market'
     required: false
-    default: '7'
+    default: '5'
   weather-api-key:
     description: 'https://weatherapi.com API key. Get one for free at https://www.weatherapi.com'
     required: true
@@ -22,8 +22,8 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.test }}
-    - --weather-api-key=${{ inputs.weather-api-key }}
+    - --stonks-api-key=${{ inputs.stonks-api-key }}
     - --days=${{ inputs.days }}
-    - --city=${{ inputs.city }}
+    - --crypto=${{ inputs.crypto }}
     - --template-file=${{ inputs.template-file }}
     - --out-file=${{ inputs.out-file }}

@@ -8,31 +8,29 @@ on:
     # nesse caso, ele irá rodar diariamente às 10h.
     - cron: '0 10 * * *'
 
-
 jobs:
-  update-stonks:
-    
-    permissions: write-all
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      
-      - name: Generate README
-        uses: adzmatheus/stonks-market@latest
-        with:
-          crypto: BTC
-          days: 5
-          stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
-          template-file: 'README.md.template'
-          out-file: 'README.md'
-      
-      - name: Commit
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "update"
-          git push origin main
+    update-stonks:
+        permissions: write-all
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Generate README
+              uses: ./stonks-market@v1.0.0
+              with:
+                crypto: BTC
+                days: 5
+                stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
+                template-file: 'README.md.template'
+                out-file: 'README.md'
+            - name: Commit
+              run: |
+                if git diff --exit-code; then
+                  echo "No changes to commit."
+                  exit 0
+                else
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  git add .
+                  git commit -m "update"
+                  git push origin main
+                fi
