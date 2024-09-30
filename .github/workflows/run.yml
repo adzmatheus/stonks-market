@@ -13,7 +13,10 @@ jobs:
         permissions: write-all
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            
+            - name: Check out the repository
+              uses: actions/checkout@v4
+            
             - name: Generate README
               uses: ./stonks-market@v1.0.0
               with:
