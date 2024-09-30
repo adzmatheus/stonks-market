@@ -18,7 +18,7 @@ jobs:
               uses: actions/checkout@v4
             
             - name: Generate README
-              uses: ./stonks-market@v1.0.0
+              uses: ./stonks-market
               with:
                 crypto: BTC
                 days: 5
