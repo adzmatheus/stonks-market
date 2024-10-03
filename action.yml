@@ -2,7 +2,7 @@ name: 'Update Stonks'
 description: 'Update Daily Stonks to your README.md'
 inputs:
   ticker:
-    description: 'Ticker'
+    description: 'Ticker on market'
     required: true
   days:
     description: 'Days of market'
