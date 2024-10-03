@@ -19,8 +19,10 @@ func NewStonksService(service *stonksapi_com.Service) *StonksService {
 }
 
 func (s *StonksService) Market(ctx context.Context, ticker string, days int) ([]model.Stonks, error) {
+
 	market, err := s.service.Market(ctx, ticker, days)
-	if err != nil {
+	if s.service == nil || err != nil {
+		print("service is not initialized")
 		return nil, err
 	}
 

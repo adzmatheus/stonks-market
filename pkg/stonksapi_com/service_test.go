@@ -9,9 +9,9 @@ import (
 )
 
 func TestMarket(t *testing.T) {
-	key := os.Getenv("STONKS_API_KEY")
+	key := os.Getenv("BRAPI_API_KEY")
 	if key == "" {
-		t.Skipf("Missing STONKS_API_KEY")
+		t.Skipf("Missing BRAPI_API_KEY")
 	}
 	service := NewService(key)
 	market, err := service.Market(context.Background(), "^BVSP", 5)
