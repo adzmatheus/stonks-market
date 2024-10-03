@@ -7,5 +7,5 @@ import (
 )
 
 type StonksService interface {
-	Market(ctx context.Context, crypto string, days int) ([]model.Stonks, error)
+	Market(ctx context.Context, ticker string, days int) ([]model.Stonks, error)
 }
