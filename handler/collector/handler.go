@@ -23,16 +23,19 @@ func NewCollector(stonksService StonksService) *Collector {
 	return &Collector{stonksService}
 }
 
-func (c *Collector) Collect(ctx context.Context, crypto string, days int, templateFilePath string, outFilePath string) error {
-	slog.Info(fmt.Sprintf("Collecting stonks for %s for %d days - Template file: %s", crypto, days, templateFilePath))
-	stonkses, err := c.stonksService.Market(ctx, crypto, days)
+func (c *Collector) Collect(ctx context.Context, ticker string, days int, templateFilePath string, outFilePath string) error {
+	slog.Info(fmt.Sprintf("Collecting stonks for %s for %d days - Template file: %s", ticker, days, templateFilePath))
+
+	stonkses, err := c.stonksService.Market(ctx, ticker, days)
 	if err != nil {
 		return errs.Joinf(err, "[stonksService.Market]")
 	}
+
 	readmeTemplate, err := os.ReadFile(templateFilePath)
 	if err != nil {
 		return errs.Joinf(err, "[os.ReadFile] "+templateFilePath)
 	}
+
 	readme, err := generateOutput(stonkses, string(readmeTemplate), templates...)
 	if err != nil {
 		return errs.Joinf(err, "[generateOutput]")

@@ -1,33 +1,27 @@
 {{define "daily-table"}}
 <table>
     <tr>
-        <th>Date</th>
-        {{ range $i, $weather := . -}}
-            <td>{{ formatDate $weather.StartTime $weather.Timezone}}</td>
-        {{- end }}
-    </tr>
-    <tr>
-        <th>Weather</th>
-        {{ range $i, $weather := . -}}
-            <td><img src="{{ $weather.Icon}}"/></td>
+        <th>Stonks</th>
+        {{ range $i, $stonks := . -}}
+            <td><img src="{{ $stonks.Icon}}"/></td>
         {{- end }}
     </tr>
     <tr>
         <th>Condition</th>
-        {{ range $i, $weather := . -}}
-            <td width="200px">{{ $weather.Condition}}</td>
+        {{ range $i, $stonks := . -}}
+            <td width="200px">{{ $stonks.Condition}}</td>
         {{- end }}
     </tr>
     <tr>
         <th>Temperature</th>
-        {{ range $i, $weather := . -}}
-            <td>{{ $weather.MinTempC }} -  {{ $weather.MaxTempC}} °C</td>
+        {{ range $i, $stonks := . -}}
+            <td>{{ $stonks.MinTempC }} -  {{ $stonks.MaxTempC}} °C</td>
         {{- end }}
     </tr>
     <tr>
         <th>Wind</th>
-        {{ range $i, $weather := . -}}
-            <td>{{ $weather.AvgWindKph}} kph</td>
+        {{ range $i, $stonks := . -}}
+            <td>{{ $stonks.AvgWindKph}} kph</td>
         {{- end }}
     </tr>
 </table>

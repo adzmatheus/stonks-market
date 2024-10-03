@@ -2,13 +2,13 @@ package stonksapi
 
 import (
 	"context"
-	"strings"
-	"time"
 
 	"github.com/adzmatheus/stonks-market/model"
 	"github.com/adzmatheus/stonks-market/pkg/stonksapi_com"
-	"github.com/adzmatheus/stonks-market/pkg/utils"
 )
+
+const expense string = "endereco_desceu"
+const income string = "endereco_subiu"
 
 type StonksService struct {
 	service *stonksapi_com.Service
@@ -18,58 +18,51 @@ func NewStonksService(service *stonksapi_com.Service) *StonksService {
 	return &StonksService{service}
 }
 
-func (s *StonksService) Market(ctx context.Context, city string, days int) ([]model.Stonks, error) {
-	market, err := s.service.Market(ctx, city, days)
+func (s *StonksService) Market(ctx context.Context, ticker string, days int) ([]model.Stonks, error) {
+	market, err := s.service.Market(ctx, ticker, days)
 	if err != nil {
 		return nil, err
 	}
+
 	stonkses, err := toStonkses(*market)
 	if err != nil {
 		return nil, err
 	}
+
 	return stonkses, nil
 }
 
 func toStonkses(market stonksapi_com.Market) ([]model.Stonks, error) {
-	timezoneOffset, err := utils.GetTimezoneOffset(market.Location.TzId)
-	if err != nil {
-		return nil, err
-	}
 
 	var stonkses []model.Stonks
-	for _, marketDay := range market.Market.Marketday {
-		stonks := marketDayToStonks(marketDay, market.Location.Country, market.Location.Name, market.Location.TzId, int64(timezoneOffset.Seconds()))
+
+	for _, result := range market.Results {
+		stonks := marketResultToStonks(result)
 		stonkses = append(stonkses, stonks)
 	}
+
 	return stonkses, nil
 }
 
-func marketDayToStonks(marketDay stonksapi_com.MarketDay, country, city, timezone string, timezoneOffset int64) model.Stonks {
-	startTime := time.Unix(marketDay.DateEpoch, 0)
-	endTime := startTime.Add(time.Hour)
+func marketResultToStonks(result stonksapi_com.Result) model.Stonks {
+
 	return model.Stonks{
-		Condition:             marketDay.Day.Condition.Text,
-		Icon:                  fillImageSchema(marketDay.Day.Condition.Icon),
-		StartTime:             &startTime,
-		EndTime:               &endTime,
-		Country:               country,
-		City:                  city,
-		Timezone:              timezone,
-		TimezoneOffsetSeconds: timezoneOffset,
-
-		AvgTempC: marketDay.Day.AvgtempC,
-		MinTempC: marketDay.Day.MintempC,
-		MaxTempC: marketDay.Day.MaxtempC,
-
-		AvgWindKph: marketDay.Day.MaxwindKph,
-		MinWindKph: marketDay.Day.MaxwindKph,
-		MaxWindKph: marketDay.Day.MaxwindKph,
+		Currency:                   result.Currency,
+		ShortName:                  result.ShortName,
+		LongName:                   result.LongName,
+		RegularMarketPrice:         result.RegularMarketPrice,
+		RegularMarketChangePercent: result.RegularMarketChangePercent,
+		Symbol:                     result.Symbol,
+		RegularMarketPreviousClose: result.RegularMarketPreviousClose,
+		Logourl:                    result.LogoURL,
+		Icon:                       findIcon(result.RegularMarketPreviousClose, result.RegularMarketPrice),
 	}
 }
 
-func fillImageSchema(imageUrl string) string {
-	if strings.HasPrefix(imageUrl, "//") {
-		imageUrl = "https:" + imageUrl
+func findIcon(lastPrice float64, updatedPrice float64) string {
+	iconAddress := expense
+	if lastPrice < updatedPrice {
+		iconAddress = income
 	}
-	return imageUrl
+	return iconAddress
 }

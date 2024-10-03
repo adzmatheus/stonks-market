@@ -10,18 +10,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//go:embed testdata/weathers.json
-var weathersData []byte
+//go:embed testdata/stonkses.json
+var stonksesData []byte
 
 func TestGenerateReadme(t *testing.T) {
-	var weathers []model.Stonks
-	err := json.Unmarshal(weathersData, &weathers)
+	var stonkses []model.Stonks
+	err := json.Unmarshal(stonksesData, &stonkses)
 	if err != nil {
 		panic(err)
 	}
 
 	// Construct the path to data/test.txt relative to the test file
-	readme, err := generateOutput(weathers, "../../template/README.md.template")
+	readme, err := generateOutput(stonkses, "../../template/README.md.template")
 	assert.NoError(t, err)
 	assert.NotNil(t, readme)
 	assert.NotEmpty(t, *readme)

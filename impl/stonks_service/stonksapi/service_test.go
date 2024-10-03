@@ -24,13 +24,10 @@ func TestToStonkses(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, stonkses)
 	for _, stonks := range stonkses {
-		assert.NotEmpty(t, stonks.Country)
-		assert.NotEmpty(t, stonks.City)
-		assert.NotEmpty(t, stonks.Condition)
-		assert.NotEmpty(t, stonks.Timezone)
-		assert.NotEmpty(t, stonks.Icon)
-		assert.NotEmpty(t, stonks.StartTime)
-		assert.NotEmpty(t, stonks.EndTime)
+		assert.NotEmpty(t, stonks.Currency)
+		assert.NotEmpty(t, stonks.RegularMarketPrice)
+		assert.NotEmpty(t, stonks.ShortName)
+		assert.NotEmpty(t, stonks.RegularMarketPreviousClose)
 	}
 	d, err := json.Marshal(stonkses)
 	fmt.Println(string(d))

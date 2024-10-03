@@ -50,10 +50,10 @@ func NewService(key string, opts ...Option) *Service {
 	return service
 }
 
-func (s *Service) Market(ctx context.Context, crypto string, days int) (*Market, error) {
+func (s *Service) Market(ctx context.Context, ticker string, days int) (*Market, error) {
 	var market *Market
 	resp, err := s.httpClient.R().SetContext(ctx).
-		SetQueryParam("q", crypto).
+		SetQueryParam("q", ticker).
 		SetQueryParam("days", fmt.Sprintf("%d", days)).
 		SetQueryParam("key", s.key).
 		SetResult(&market).

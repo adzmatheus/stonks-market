@@ -14,8 +14,8 @@ func TestMarket(t *testing.T) {
 		t.Skipf("Missing STONKS_API_KEY")
 	}
 	service := NewService(key)
-	forecast, err := service.Market(context.Background(), "London", 5)
+	market, err := service.Market(context.Background(), "^BVSP", 5)
 	assert.NoError(t, err)
-	assert.NotNil(t, forecast)
-	assert.NotEmpty(t, forecast.Market.Marketday)
+	assert.NotNil(t, market)
+	assert.NotEmpty(t, market.Results)
 }

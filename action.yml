@@ -8,8 +8,8 @@ inputs:
     description: 'Days of market'
     required: false
     default: '5'
-  weather-api-key:
-    description: 'https://weatherapi.com API key. Get one for free at https://www.weatherapi.com'
+  stonks-api-key:
+    description: 'https://brapi.dev/api API key. Get one for free at https://brapi.dev/api'
     required: true
   template-file:
     description: 'Template file path'
