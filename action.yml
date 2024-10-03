@@ -1,8 +1,8 @@
 name: 'Update Stonks'
 description: 'Update Daily Stonks to your README.md'
 inputs:
-  crypto:
-    description: 'Crypto'
+  ticker:
+    description: 'Ticker'
     required: true
   days:
     description: 'Days of market'
@@ -24,6 +24,6 @@ runs:
     - ${{ inputs.test }}
     - --stonks-api-key=${{ inputs.stonks-api-key }}
     - --days=${{ inputs.days }}
-    - --crypto=${{ inputs.crypto }}
+    - --ticker=${{ inputs.ticker }}
     - --template-file=${{ inputs.template-file }}
     - --out-file=${{ inputs.out-file }}
