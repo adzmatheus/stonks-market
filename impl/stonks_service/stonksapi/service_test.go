@@ -30,5 +30,8 @@ func TestToStonkses(t *testing.T) {
 		assert.NotEmpty(t, stonks.RegularMarketPreviousClose)
 	}
 	d, err := json.Marshal(stonkses)
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println(string(d))
 }

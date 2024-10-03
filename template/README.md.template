@@ -1,6 +1,6 @@
-## Stonks in the last {{ len .Weathers }} days
+## Stonks in the last {{ len .Stonks }} days
 
-{{template "daily-table" .Weathers}}
+{{template "daily-table" .Stonks}}
 
 {{- end }}
 

@@ -7,8 +7,8 @@ import (
 	"github.com/adzmatheus/stonks-market/pkg/stonksapi_com"
 )
 
-const expense string = "endereco_desceu"
-const income string = "endereco_subiu"
+const expense string = "https://github.com/adzmatheus/stonks-market/blob/main/assets/expense.svg"
+const income string = "https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"
 
 type StonksService struct {
 	service *stonksapi_com.Service

@@ -7,21 +7,15 @@
         {{- end }}
     </tr>
     <tr>
-        <th>Condition</th>
+        <th>Close yesterday: R$</th>
         {{ range $i, $stonks := . -}}
-            <td width="200px">{{ $stonks.Condition}}</td>
+            <td width="200px">{{ $stonks.RegularMarketPreviousClose}}</td>
         {{- end }}
     </tr>
     <tr>
-        <th>Temperature</th>
+        <th>Price today</th>
         {{ range $i, $stonks := . -}}
-            <td>{{ $stonks.MinTempC }} -  {{ $stonks.MaxTempC}} °C</td>
-        {{- end }}
-    </tr>
-    <tr>
-        <th>Wind</th>
-        {{ range $i, $stonks := . -}}
-            <td>{{ $stonks.AvgWindKph}} kph</td>
+            <td>{{ $stonks.RegularMarketPrice}} kph</td>
         {{- end }}
     </tr>
 </table>

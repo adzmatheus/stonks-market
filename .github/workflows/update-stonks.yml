@@ -20,7 +20,7 @@ jobs:
             - name: Generate README
               uses: ./
               with:
-                crypto: BTC
+                ticker: ^BVSP
                 days: 5
                 stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
                 template-file: 'README.md.template'
