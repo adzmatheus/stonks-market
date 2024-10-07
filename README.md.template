@@ -31,11 +31,6 @@ You can easily embed tables in your README.md using GitHub Actions by following 
 
 **Step 3:** Embed one of the following entities within your `README.md.template`:
 
-- **Today's Weather Table:**
-```shell
-{{`{{`}} template "hourly-table" $.TodayWeather.HourlyWeathers {{`}}`}}
-```
-
 - **Daily Weather Table:**
 ```shell
 {{`{{`}} template "daily-table" .Weathers {{`}}`}}

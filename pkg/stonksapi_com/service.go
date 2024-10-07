@@ -53,7 +53,7 @@ func NewService(key string, opts ...Option) *Service {
 func (s *Service) Market(ctx context.Context, ticker string, days int) (*Market, error) {
 	var market *Market
 
-	url := fmt.Sprintf("/api/quote/%s?range=%dd&interval=1d&token=%s", ticker, days, s.key)
+	url := fmt.Sprintf("/api/quote/%s?range=%d&interval=1d&token=%s", ticker, days, s.key)
 
 	resp, err := s.httpClient.R().SetContext(ctx).
 		// SetQueryParam("tickers", ticker).
