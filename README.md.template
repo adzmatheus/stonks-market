@@ -1,21 +1,10 @@
-## Today's Weather
-<div align="center">
+## Stonks For Next {{ len .Stonkses }} days
 
-`{{ $.TodayWeather.City }}, {{$.TodayWeather.Country }} - {{ formatDate $.TodayWeather.StartTime $.TodayWeather.Timezone }}`
-
-<img src="{{ $.TodayWeather.Icon}}"/>
-
-{{ $.TodayWeather.Condition }}
-
-</div>
-
-## Weather For Next {{ len .Weathers }} days
-
-{{template "daily-table" .Weathers}}
+{{template "daily-table" .Stonkses}}
 
 *Updated at: {{formatTime .UpdatedAt}}*
 
-## GitHub Actions: Embed up-to-date Weather in your README
+## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
 <summary>
     View
@@ -29,9 +18,9 @@ You can easily embed tables in your README.md using GitHub Actions by following 
 
 **Step 3:** Embed one of the following entities within your `README.md.template`:
 
-- **Daily Weather Table:**
+- **Daily Stonks Table:**
 ```shell
-{{`{{`}} template "daily-table" .Weathers {{`}}`}}
+{{`{{`}} template "daily-table" .Stonkses {{`}}`}}
 ```
 
 - **Updated at:**
@@ -41,7 +30,7 @@ You can easily embed tables in your README.md using GitHub Actions by following 
 
 If you are familiar with Go templates, you have access to the `root` variable, which includes the following fields:
 
-- `Weathers`: An array of daily Weather. You can view the Weather struct definition in [model/weather.go](model/weather.go).
+- `Stonkses`: An array of daily Stonks. You can view the Stonks struct definition in [model/weather.go](model/weather.go).
 - `UpdatedAt`: This field contains the timestamp in the format of `time.Date`.
 
 **Step 4**: Register Github Action
@@ -88,7 +77,7 @@ jobs:
         - Register free API key in [https://weatherapi.com](https://weatherapi.com)
         - Setup secrets with name `WEATHER_API_KEY` in `Your repo > settings > Secrets and variables > Actions > New repository secret`
 
-**Step 5**: Commit your change, then Github actions will run as your specificed cron to update Weather into your README.md file
+**Step 5**: Commit your change, then Github actions will run as your specificed cron to update Stonks into your README.md file
 </details>
 
 
