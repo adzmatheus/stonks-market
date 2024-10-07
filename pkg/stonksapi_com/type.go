@@ -2,7 +2,7 @@ package stonksapi_com
 
 import "time"
 
-const APIEndpoint = "https://brapi.dev/api/quote/"
+const APIEndpoint = "https://brapi.dev"
 
 type Result struct {
 	Currency                   string                `json:"currency"`

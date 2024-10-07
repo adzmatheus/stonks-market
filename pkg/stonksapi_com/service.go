@@ -53,11 +53,11 @@ func NewService(key string, opts ...Option) *Service {
 func (s *Service) Market(ctx context.Context, ticker string, days int) (*Market, error) {
 	var market *Market
 	resp, err := s.httpClient.R().SetContext(ctx).
-		SetQueryParam("q", ticker).
-		SetQueryParam("days", fmt.Sprintf("%d", days)).
-		SetQueryParam("key", s.key).
+		SetQueryParam("tickers", ticker).
+		SetQueryParam("range", fmt.Sprintf("%d", days)).
+		SetQueryParam("token", s.key).
 		SetResult(&market).
-		Get("/v1/market.json")
+		Get("/api/quote/")
 	if err != nil {
 		return nil, err
 	}
