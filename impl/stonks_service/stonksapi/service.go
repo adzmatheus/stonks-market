@@ -2,6 +2,7 @@ package stonksapi
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/adzmatheus/stonks-market/model"
 	"github.com/adzmatheus/stonks-market/pkg/stonksapi_com"
@@ -19,6 +20,12 @@ func NewStonksService(service *stonksapi_com.Service) *StonksService {
 }
 
 func (s *StonksService) Market(ctx context.Context, ticker string, days int) ([]model.Stonks, error) {
+
+	// Verifica se s.service é nil antes de tentar usá-lo
+	if s.service == nil {
+		print("service is not initialized")
+		return nil, fmt.Errorf("service is not initialized")
+	}
 
 	market, err := s.service.Market(ctx, ticker, days)
 	if s.service == nil || err != nil {
