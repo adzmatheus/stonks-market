@@ -2,8 +2,7 @@
 <table>
     <tr>
         <th> 
-            {{ range $i, $stonks := . -}}
-            {{ $stonks.Symbol}} 
+            Stonks
         </th>
         {{ range $i, $stonks := . -}}
             <td> <div align="center"> <img src="{{ $stonks.Icon}}"/> </div> </td>
