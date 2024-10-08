@@ -51,7 +51,7 @@ jobs:
               uses: adzmatheus/stonks-market@v1.0.0
               with:
                 ticker: ^BVSP
-                stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
+                stonks-api-key: {{`${{ secrets.BRAPI_API_KEY }}`}}
                 template-file: 'README.md.template'
                 out-file: 'README.md'
             - name: Commit
