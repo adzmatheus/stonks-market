@@ -1,9 +1,13 @@
 {{define "daily-table"}}
 <table>
     <tr>
-        <th> 
-            Stonks
-        </th>
+        <th> Ticker </th>
+        {{ range $i, $stonks := . -}}
+            <td> <div align="center"> {{ $stonks.Symbol}}" </div> </td>
+        {{- end }}
+    </tr>
+    <tr>
+        <th> Stonks </th>
         {{ range $i, $stonks := . -}}
             <td> <div align="center"> <img src="{{ $stonks.Icon}}"/> </div> </td>
         {{- end }}

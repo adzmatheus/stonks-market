@@ -1,4 +1,4 @@
-## Stonks from last {{ len .Stonkses }} day
+## Market from last {{ len .Stonkses }} day
 
 {{template "daily-table" .Stonkses}}
 
