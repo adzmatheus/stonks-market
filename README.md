@@ -1,15 +1,17 @@
-## Stonks from last 1 day
+## Market from last 1 day
 
 
 <table>
     <tr>
-        <th> 
-            Stonks
-        </th>
+        <th> Ticker </th>
+        <td> <div align="center"> ^BVSP" </div> </td>
+    </tr>
+    <tr>
+        <th> Stonks </th>
         <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/> </div> </td>
     </tr>
     <tr>
-        <th>Close yesterday: </th>
+        <th>Close yesterday </th>
         <td width="200px"> BRL 131791.55 </td>
     </tr>
     <tr>
@@ -19,7 +21,7 @@
 </table>
 
 
-*Updated at: 2024-10-08T07:02:47Z*
+*Updated at: 2024-10-08T07:13:07Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
