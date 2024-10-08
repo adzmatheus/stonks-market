@@ -13,7 +13,7 @@
         {{- end }}
     </tr>
     <tr>
-        <th>Close yesterday: </th>
+        <th>Close yesterday </th>
         {{ range $i, $stonks := . -}}
             <td width="200px"> BRL {{ $stonks.RegularMarketPreviousClose}} </td>
         {{- end }}
