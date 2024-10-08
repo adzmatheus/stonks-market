@@ -1,23 +1,25 @@
-## Stonks For Next 1 days
+## Stonks from last 1 day
 
 
 <table>
     <tr>
-        <th>Stonks</th>
-        <td><img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/></td>
+        <th> 
+            Stonks
+        </th>
+        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/> </div> </td>
     </tr>
     <tr>
-        <th>Close yesterday: R$</th>
-        <td width="200px">131672</td>
+        <th>Close yesterday: </th>
+        <td width="200px"> BRL 131791.55 </td>
     </tr>
     <tr>
         <th>Price today</th>
-        <td>131791.55 kph</td>
+        <td> BRL 132017.84 </td>
     </tr>
 </table>
 
 
-*Updated at: 2024-10-07T10:22:15Z*
+*Updated at: 2024-10-08T07:02:47Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
@@ -45,29 +47,28 @@ You can easily embed tables in your README.md using GitHub Actions by following 
 
 If you are familiar with Go templates, you have access to the `root` variable, which includes the following fields:
 
-- `Stonkses`: An array of daily Stonks. You can view the Stonks struct definition in [model/weather.go](model/weather.go).
+- `Stonkses`: An array of daily Stonks. You can view the Stonks struct definition in [model/stonks.go](model/stonks.go).
 - `UpdatedAt`: This field contains the timestamp in the format of `time.Date`.
 
 **Step 4**: Register Github Action
-- Create a file `.github/workflows/update-weather.yml` in your repository.
+- Create a file `.github/workflows/update-stonks.yml` in your repository.
 ```yml
 name: "Cronjob"
 on:
 schedule:
-- cron: '15 * * * *'
+- cron: '0 10 * * *'
 
 jobs:
-    update-weather:
+    update-stonks:
         permissions: write-all
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
             - name: Generate README
-              uses: huantt/weather-forecast@v1.0.5
+              uses: adzmatheus/stonks-market@v1.0.0
               with:
-                city: HaNoi
-                days: 7
-                weather-api-key: ${{ secrets.WEATHER_API_KEY }}
+                ticker: ^BVSP
+                stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
                 template-file: 'README.md.template'
                 out-file: 'README.md'
             - name: Commit
@@ -84,13 +85,12 @@ jobs:
                 fi
 ```
 - Update some variable in this file:
-    - city: The city that you want to forecast weather
-    - days: number of forecast days
+    - ticker: The ticker that you want show the stonks. Find options on [BRAPI Available](https://brapi.dev/api/available)
     - template-file: Path to the above template file. Eg. `template/README.md.template`
     - out-file: your README.md file name
     - weather-api-key:
-        - Register free API key in [https://weatherapi.com](https://weatherapi.com)
-        - Setup secrets with name `WEATHER_API_KEY` in `Your repo > settings > Secrets and variables > Actions > New repository secret`
+        - Register free API token in [BRAPI Dashboard](https://brapi.dev/dashboard)
+        - Setup secrets with name `BRAPI_API_KEY` in `Your repo > settings > Secrets and variables > Actions > New repository secret`
 
 **Step 5**: Commit your change, then Github actions will run as your specificed cron to update Stonks into your README.md file
 </details>
@@ -102,46 +102,44 @@ jobs:
 
 #### Install
 ```shell
-go install https://github.com/huantt/weather-forecast
+go install https://github.com/adzmatheus/stonks-market
 ```
 
 #### Run
 
 ```shell
 Usage:
-weather-forecast update-weather [flags]
+stonks-market update-stonks [flags]
 
 Flags:
---city string              City
---days int                 Days of forecast (default 7)
+--ticker string                Ticker
 -h, --help                     help for update-weather
 -o, --out-file string          Output file path
 -f, --template-file string     Readme template file path
--k, --weather-api-key string   weatherapi.com API key
+-k, --stonks-api-key string    stonksapi.com API key
 
 ```
 
 **Sample**
 ```shell
-weather-forecast update-weather \
---days=7 \
---weather-api-key="$WEATHER_API_KEY" \
+stonks-market update-stonks \
+--ticker=^BVSP \
+--stonks-api-key="$STONKS_API_KEY" \
 --template-file='template/README.md.template' \
---city=HaNoi \
 --out-file='README.md'
 ```
 
 ### Docker
 ```shell
-docker build -t weather-forecast .
+docker build -t stonks-market .
 ```
 
 ```shell
 docker run --rm \
 -v ./:/app/data \
-weather-forecast \
---weather-api-key='XXXX' \
---city=HaNoi \
+stonks-market \
+--stonks-api-key='XXXX' \
+--ticker=^BVSP \
 --out-file=data/README.md \
 --template-file=data/README.md.template
 ```
