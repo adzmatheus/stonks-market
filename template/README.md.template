@@ -1,4 +1,4 @@
-## Stonks in the last {{ len .Stonks }} days
+## Stonks from the last {{ len .Stonks }} days
 
 {{template "daily-table" .Stonks}}
 

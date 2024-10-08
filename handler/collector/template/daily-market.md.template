@@ -1,7 +1,10 @@
 {{define "daily-table"}}
 <table>
     <tr>
-        <th> {{ $stonks.Symbol}} </th>
+        <th> 
+            {{ range $i, $stonks := . -}}
+            {{ $stonks.Symbol}} 
+        </th>
         {{ range $i, $stonks := . -}}
             <td> <div align="center"> <img src="{{ $stonks.Icon}}"/> </div> </td>
         {{- end }}
@@ -9,13 +12,13 @@
     <tr>
         <th>Close yesterday: </th>
         {{ range $i, $stonks := . -}}
-            <td width="200px"> R$ {{ $stonks.RegularMarketPreviousClose}} </td>
+            <td width="200px"> BRL {{ $stonks.RegularMarketPreviousClose}} </td>
         {{- end }}
     </tr>
     <tr>
         <th>Price today</th>
         {{ range $i, $stonks := . -}}
-            <td> R$ {{ $stonks.RegularMarketPrice}} </td>
+            <td> BRL {{ $stonks.RegularMarketPrice}} </td>
         {{- end }}
     </tr>
 </table>
