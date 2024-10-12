@@ -8,20 +8,20 @@
     </tr>
     <tr>
         <th> Stonks </th>
-        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/> </div> </td>
+        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/expense.svg"/> </div> </td>
     </tr>
     <tr>
         <th>Close yesterday </th>
-        <td width="200px"> BRL 129962.06 </td>
+        <td width="200px"> BRL 130352.86 </td>
     </tr>
     <tr>
         <th>Price today</th>
-        <td> BRL 130352.86 </td>
+        <td> BRL 129992.29 </td>
     </tr>
 </table>
 
 
-*Updated at: 2024-10-11T10:20:28Z*
+*Updated at: 2024-10-12T10:19:13Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
@@ -90,7 +90,7 @@ jobs:
     - ticker: The ticker that you want show the stonks. Find options on [BRAPI Available](https://brapi.dev/api/available)
     - template-file: Path to the above template file. Eg. `template/README.md.template`
     - out-file: your README.md file name
-    - weather-api-key:
+    - stonks-api-key:
         - Register free API token in [BRAPI Dashboard](https://brapi.dev/dashboard)
         - Setup secrets with name `BRAPI_API_KEY` in `Your repo > settings > Secrets and variables > Actions > New repository secret`
 
@@ -115,7 +115,7 @@ stonks-market update-stonks [flags]
 
 Flags:
 --ticker string                Ticker
--h, --help                     help for update-weather
+-h, --help                     help for update-stonks
 -o, --out-file string          Output file path
 -f, --template-file string     Readme template file path
 -k, --stonks-api-key string    stonksapi.com API key
