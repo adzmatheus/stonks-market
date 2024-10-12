@@ -71,7 +71,7 @@ jobs:
     - ticker: The ticker that you want show the stonks. Find options on [BRAPI Available](https://brapi.dev/api/available)
     - template-file: Path to the above template file. Eg. `template/README.md.template`
     - out-file: your README.md file name
-    - weather-api-key:
+    - stonks-api-key:
         - Register free API token in [BRAPI Dashboard](https://brapi.dev/dashboard)
         - Setup secrets with name `BRAPI_API_KEY` in `Your repo > settings > Secrets and variables > Actions > New repository secret`
 
@@ -96,7 +96,7 @@ stonks-market update-stonks [flags]
 
 Flags:
 --ticker string                Ticker
--h, --help                     help for update-weather
+-h, --help                     help for update-stonks
 -o, --out-file string          Output file path
 -f, --template-file string     Readme template file path
 -k, --stonks-api-key string    stonksapi.com API key
