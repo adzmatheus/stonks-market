@@ -48,7 +48,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - name: Generate README
-              uses: adzmatheus/stonks-market@v1.0.0
+              uses: adzmatheus/stonks-market@v1.0.1
               with:
                 ticker: ^BVSP
                 stonks-api-key: {{`${{ secrets.BRAPI_API_KEY }}`}}
