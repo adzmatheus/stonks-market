@@ -8,20 +8,20 @@
     </tr>
     <tr>
         <th> Stonks </th>
-        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/> </div> </td>
+        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/expense.svg"/> </div> </td>
     </tr>
     <tr>
         <th>Close yesterday </th>
-        <td width="200px"> BRL 127768.19 </td>
+        <td width="200px"> BRL 128197.25 </td>
     </tr>
     <tr>
         <th>Price today</th>
-        <td> BRL 128197.25 </td>
+        <td> BRL 126922.11 </td>
     </tr>
 </table>
 
 
-*Updated at: 2024-11-21T10:22:51Z*
+*Updated at: 2024-11-22T10:22:26Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
@@ -67,7 +67,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - name: Generate README
-              uses: adzmatheus/stonks-market@v1.0.0
+              uses: adzmatheus/stonks-market@v1.0.1
               with:
                 ticker: ^BVSP
                 stonks-api-key: ${{ secrets.BRAPI_API_KEY }}
