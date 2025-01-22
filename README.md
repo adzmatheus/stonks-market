@@ -12,16 +12,16 @@
     </tr>
     <tr>
         <th>Close yesterday </th>
-        <td width="200px"> BRL 122350.38 </td>
+        <td width="200px"> BRL 122855.15 </td>
     </tr>
     <tr>
         <th>Price today</th>
-        <td> BRL 122855.15 </td>
+        <td> BRL 123338.34 </td>
     </tr>
 </table>
 
 
-*Updated at: 2025-01-21T10:20:47Z*
+*Updated at: 2025-01-22T10:18:42Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
