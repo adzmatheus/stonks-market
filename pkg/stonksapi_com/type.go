@@ -45,5 +45,5 @@ type HistoricalDataPrice struct {
 type Market struct {
 	Results     []Result  `json:"results"`
 	RequestedAt time.Time `json:"requestedAt"`
-	Took        string    `json:"took"`
+	Took        float64    `json:"took"`
 }
