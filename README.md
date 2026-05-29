@@ -16,12 +16,12 @@
     </tr>
     <tr>
         <th>Price today</th>
-        <td> BRL 174935.89 </td>
+        <td> BRL 175063.4 </td>
     </tr>
 </table>
 
 
-*Updated at: 2026-05-28T13:54:40Z*
+*Updated at: 2026-05-29T12:48:04Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
