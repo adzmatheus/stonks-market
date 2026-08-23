@@ -21,7 +21,7 @@
 </table>
 
 
-*Updated at: 2026-08-22T10:27:19Z*
+*Updated at: 2026-08-23T10:27:09Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
