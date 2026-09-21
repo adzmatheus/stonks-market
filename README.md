@@ -8,20 +8,20 @@
     </tr>
     <tr>
         <th> Stonks </th>
-        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/expense.svg"/> </div> </td>
+        <td> <div align="center"> <img src="https://github.com/adzmatheus/stonks-market/blob/main/assets/income.svg"/> </div> </td>
     </tr>
     <tr>
         <th>Close yesterday </th>
-        <td width="200px"> BRL 185992 </td>
+        <td width="200px"> BRL 185229.17 </td>
     </tr>
     <tr>
         <th>Price today</th>
-        <td> BRL 185229.17 </td>
+        <td> BRL 186583.05 </td>
     </tr>
 </table>
 
 
-*Updated at: 2026-09-20T14:00:48Z*
+*Updated at: 2026-09-21T16:20:14Z*
 
 ## GitHub Actions: Embed up-to-date Stonks in your README
 <details>
